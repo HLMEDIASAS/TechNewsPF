@@ -1,3 +1,11 @@
+<?php 
+
+    use Model\News\CategorieModel;
+
+    $CM = new CategorieModel();
+    $categories = $CM->getCategories();
+    #debug($categories);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +31,7 @@
     <link href="<?= $this->assetUrl('css/owl.carousel.min.css'); ?>" rel="stylesheet" />
     <!-- Main CSS (SCSS Compile) -->
     <link href="<?= $this->assetUrl('css/main.css'); ?>" rel="stylesheet" />
+    <?= $this->section('css'); ?>
     <!-- JavaScripts -->
     <!--<script src="<?= $this->assetUrl('js/modernizr.js'); ?>"></script>-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -73,18 +82,11 @@
     				<span>MENU</span>
     			</div>
     			<ul class="hidden-sm hidden-xs">
-    				<li>
-    					<a href="index.html">Accueil </a>
-    				</li>
-    				<li>
-    					<a href="business.html">Business</a>
-    				</li>
-    				<li>
-    					<a href="computing.html">Computing</a>
-    				</li>
-    				<li>
-    					<a href="tech.html">Tech </a>
-    				</li>
+    				<?php foreach ($categories as $categorie) : ?>
+        				<li>
+        					<a href="#"><?= $categorie->getLIBELLECATEGORIE(); ?></a>
+        				</li>
+    				<?php endforeach; ?>
     			</ul>
     			<div class="search-icon">
     				<div class="search-icon-inner">
@@ -102,6 +104,7 @@
      ----------------------------------------- -->
      
     		<!-- CONTENU DU SITE -->
+    		<?= $this->section('contenu'); ?>
     		
     		<!-- SIDEBAR -->
     		
@@ -205,6 +208,7 @@
     <script src="<?= $this->assetUrl('js/bootstrap.js'); ?>"></script>
     <script src="<?= $this->assetUrl('js/owl.carousel.min.js'); ?>"></script>
     <script src="<?= $this->assetUrl('js/main.js'); ?>"></script>
+    <?= $this->section('script'); ?>
     
 </body>
 </html>
