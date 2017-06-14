@@ -16,6 +16,20 @@
     $tags = ORM::for_table('tags')->find_result_set();
     #debug($tags);
     
+    # Récupération des 5 derniers articles du plus récent au plus ancien.
+    $cinqDerniersArticles = ORM::for_table('view_articles')
+                                ->limit(5)
+                                ->order_by_desc('DATECREATIONARTICLE')
+                                ->find_result_set();
+    
+    #debug($cinqDerniersArticles);
+    
+    # Récupération des Articles en Avant
+    $specialArticles = ORM::for_table('view_articles')
+                           ->where('SPECIALARTICLE', 1)
+                            ->find_result_set();
+    #debug($specialArticles);
+    
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -119,6 +133,7 @@
     		<?= $this->section('contenu'); ?>
     		
     		<!-- SIDEBAR -->
+    		<?php include_once 'sidebar.inc.php'; ?>
     		
      	</div> <!-- ./page -->
      </div> <!-- ./container --> 
@@ -152,17 +167,9 @@
                         <h3>RECHERCHE PAR TAGS</h3>
 
                         <div class="list-tags">
-                            <a href="#">iPhone 7</a>
-                            <a href="#">News</a>
-                            <a href="#">Sport</a>
-                            <a href="#">Apple</a>
-                            <a href="#">Alcatel</a>
-                            <a href="#">Pixi 4</a>
-                            <a href="#">Elon Musk </a>
-                            <a href="#">Smart phone</a>
-                            <a href="#">Nexus</a>
-                            <a href="#">Canvas</a>
-
+                        	<?php foreach ($tags as $tag) : ?>
+                            	<a href="#"><?= $tag->LIBELLETAGS; ?></a>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
