@@ -37,7 +37,7 @@
 	<!-- subcribe box-->
 	<div class="subcribe-box">
 		<h3>NEWSLETTER</h3>
-		<p>Inscrivez-vous pour recevoir nos dernières publications.</p>
+		<p>Inscrivez-vous pour recevoir nos derni&egrave;res publications.</p>
 		<input type="text" placeholder="Votre Email..." />
 		<button class="my-btn">Je m'inscris</button>
 	</div>
