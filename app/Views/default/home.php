@@ -1,4 +1,4 @@
-<?php $this->layout('layout', ['title' => 'Accueil']) ?>
+<?php $this->layout('layout', ['title' => 'Tech News - Accueil']) ?>
 
 <!-- Pour inclure du CSS -->
 <?php $this->start('css') ?>

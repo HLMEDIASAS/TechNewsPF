@@ -6,18 +6,26 @@ class CategorieModel extends \W\Model\Model
     
     /**
      * Récupère les catégories depuis la BDD
+     * @return Array Objet de type Categorie
      */
     public function getCategories() {
+        
+        // -- Je récupère les catégories depuis la BDD
         $categories = $this->findAll();
         #print_r($categories);
         
+        // -- Je créer un tableau vide pour stocker mes objets de categorie
         $data = [];
         
+        // -- Je parcours mes catégories et pour chacune d'elle, je créer un nouvel objet.
+        // -- Je place cette objet "Categorie" dans mon tableau "data"
         foreach ($categories as $categorie) {
             $data[] = new Categorie($categorie['IDCATEGORIE'], $categorie['LIBELLECATEGORIE'], $categorie['ROUTECATEGORIE']);
         }
         
         #print_r($data);
+        
+        // -- Ma fonction renvoi le tableau comprenant les objets de type Categorie
         return $data;
        
     }

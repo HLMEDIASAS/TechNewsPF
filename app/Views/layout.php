@@ -1,20 +1,31 @@
 <?php 
 
     use Model\News\CategorieModel;
+    use Model\Db\DbFactory;
 
     $CM = new CategorieModel();
     $categories = $CM->getCategories();
     #debug($categories);
+    
+    // --
+    
+    # Initialisation de la Connexion
+    DbFactory::start();
+    
+    # Récupération des Tags
+    $tags = ORM::for_table('tags')->find_result_set();
+    #debug($tags);
+    
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="congnd91">
-    <title>TEZ NEWS | Magagize & News HTML Template</title>
+    <meta name="author" content="Hugo LIEGEARD">
+    <title><?= $this->e($title); ?></title>
     <!-- Favicons -->
     <link rel="shortcut icon" href="<?= $this->assetUrl('images/favicon.png'); ?>">
     <link rel="apple-touch-icon" href="<?= $this->assetUrl('images/apple-touch-icon-57x57.png'); ?>">
@@ -56,10 +67,11 @@
     <nav class="menu-res hidden-lg hidden-md ">
     	<div class="menu-res-inner">
     		<ul>
-    			<li><a href="index.html">HOME</a></li>
-    			<li><a href="business.html">BUSINESS</a></li>
-    			<li><a href="computing.html"> COMPUTING</a></li>
-    			<li><a href="tech.html">TECH</a></li>
+    			<?php foreach ($categories as $categorie) : ?>
+    				<li>
+    					<a href="#"><?= $categorie->getLIBELLECATEGORIE(); ?></a>
+    				</li>
+				<?php endforeach; ?>
     		</ul>
     	</div>
     </nav>
@@ -129,10 +141,11 @@
                     <div class="col-md-3 col-md-offset-1 col-sm-4 col-xs-12">
                         <h3>NOS CATEGORIES</h3>
                         <ul class="list-category">
-                            <li><a href="index.html">Accueil</a></li>
-                            <li><a href="business.html">Business</a></li>
-                            <li><a href="computing.html">Computing</a></li>
-                            <li><a href="tech.html">Tech</a></li>
+                            <?php foreach ($categories as $categorie) : ?>
+                				<li>
+                					<a href="#"><?= $categorie->getLIBELLECATEGORIE(); ?></a>
+                				</li>
+            				<?php endforeach; ?>
                         </ul>
                     </div>
                     <div class="col-md-3 col-md-offset-1 col-sm-4 col-xs-12">
