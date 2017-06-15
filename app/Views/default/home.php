@@ -37,7 +37,7 @@ $this->layout('layout', ['title' => 'Tech News - Accueil']) ?>
             						</a>
             						<em></em>
             						<span>
-            							<?= $slide->DATEPUBLICATIONARTICLE; ?>
+            							<?= $slide->DATECREATIONARTICLE; ?>
             						</span>
             					</div>
             					<p><?= Shortcut::getAccroche($slide->CONTENUARTICLE); ?></p>
@@ -67,7 +67,7 @@ $this->layout('layout', ['title' => 'Tech News - Accueil']) ?>
             						</a>
             						<em></em>
             						<span>
-            							<?= $article->DATEPUBLICATIONARTICLE; ?>
+            							<?= $article->DATECREATIONARTICLE; ?>
             						</span>
             					</div>
             				</div>

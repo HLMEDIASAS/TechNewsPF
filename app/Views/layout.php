@@ -81,6 +81,9 @@
     <nav class="menu-res hidden-lg hidden-md ">
     	<div class="menu-res-inner">
     		<ul>
+    				<li>
+    					<a href="#">Accueil</a>
+    				</li>
     			<?php foreach ($categories as $categorie) : ?>
     				<li>
     					<a href="#"><?= $categorie->getLIBELLECATEGORIE(); ?></a>
@@ -108,6 +111,9 @@
     				<span>MENU</span>
     			</div>
     			<ul class="hidden-sm hidden-xs">
+    					<li>
+        					<a href="#">Accueil</a>
+        				</li>
     				<?php foreach ($categories as $categorie) : ?>
         				<li>
         					<a href="#"><?= $categorie->getLIBELLECATEGORIE(); ?></a>

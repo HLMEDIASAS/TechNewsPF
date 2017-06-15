@@ -23,7 +23,7 @@ class Categorie
     public function __construct(
         $IDCATEGORIE,
         $LIBELLECATEGORIE,
-        $ROUTECATEGORIE) {
+        $ROUTECATEGORIE = null) {
         
             $this->IDCATEGORIE      = $IDCATEGORIE;
             $this->LIBELLECATEGORIE = $LIBELLECATEGORIE;
