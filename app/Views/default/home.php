@@ -23,7 +23,7 @@ $this->layout('layout', ['title' => 'Tech News - Accueil']) ?>
             			<article class="spotlight-item">
             				<div class="spotlight-img">
             					<img alt="" src="<?= $this->assetUrl('images/product/'.$slide->FEATUREDIMAGEARTICLE); ?>" class="img-responsive" />
-            					<a href="#" class="cate-tag"><?= $slide->LIBELLECATEGORIE; ?></a>
+            					<a href="<?= $this->url('default_categorie',['categorie' => strtolower($slide->LIBELLECATEGORIE)]) ?>" class="cate-tag"><?= $slide->LIBELLECATEGORIE; ?></a>
             				</div>
             				<div class="spotlight-item-caption">
             					<h2 class="font-heading">
@@ -58,7 +58,7 @@ $this->layout('layout', ['title' => 'Tech News - Accueil']) ?>
             							<img alt="<?= $article->TITREARTICLE; ?>" 
             								src="<?= $this->assetUrl("images/product/".$article->FEATUREDIMAGEARTICLE); ?>" />
             						</a>
-            						<a href="#" class="cate-tag"><?= $article->LIBELLECATEGORIE; ?></a>
+            						<a href="<?= $this->url('default_categorie',['categorie' => strtolower($article->LIBELLECATEGORIE)]) ?>" class="cate-tag"><?= $article->LIBELLECATEGORIE; ?></a>
             					</div>
             					<h3><a href="#"><?= $article->TITREARTICLE; ?></a></h3>
             					<div class="meta-post">

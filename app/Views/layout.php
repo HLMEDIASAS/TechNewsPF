@@ -82,11 +82,11 @@
     	<div class="menu-res-inner">
     		<ul>
     				<li>
-    					<a href="#">Accueil</a>
+    					<a href="<?= $this->url('default_home'); ?>">Accueil</a>
     				</li>
     			<?php foreach ($categories as $categorie) : ?>
     				<li>
-    					<a href="#"><?= $categorie->getLIBELLECATEGORIE(); ?></a>
+    					<a href="<?= $this->url('default_categorie',['categorie' => strtolower($categorie->getLIBELLECATEGORIE())]) ?>"><?= $categorie->getLIBELLECATEGORIE(); ?></a>
     				</li>
 				<?php endforeach; ?>
     		</ul>
@@ -98,7 +98,7 @@
     		<header class="header">
     			<div class="row">
     				<div class="col-md-3 col-sm-4 col-xs-12">
-    					<a href="#" class="logo">
+    					<a href="<?= $this->url('default_home'); ?>" class="logo">
     						<img alt="Logo" src="<?= $this->assetUrl('images/logo.png'); ?>" />
     					</a>
     				</div>
@@ -112,11 +112,11 @@
     			</div>
     			<ul class="hidden-sm hidden-xs">
     					<li>
-        					<a href="#">Accueil</a>
+        					<a href="<?= $this->url('default_home'); ?>">Accueil</a>
         				</li>
     				<?php foreach ($categories as $categorie) : ?>
         				<li>
-        					<a href="#"><?= $categorie->getLIBELLECATEGORIE(); ?></a>
+        					<a href="<?= $this->url('default_categorie',['categorie' => strtolower($categorie->getLIBELLECATEGORIE())]) ?>"><?= $categorie->getLIBELLECATEGORIE(); ?></a>
         				</li>
     				<?php endforeach; ?>
     			</ul>
@@ -153,7 +153,7 @@
                 <div class="row">
                     <div class="col-md-4  col-sm-4 col-xs-12">
                         <div class="about">
-                            <a href="#" class="logo">
+                            <a href="<?= $this->url('default_home') ?>" class="logo">
                                 <img alt="" src="<?= $this->assetUrl('images/logo_footer.png'); ?>" />
                             </a>
                             <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
@@ -164,7 +164,7 @@
                         <ul class="list-category">
                             <?php foreach ($categories as $categorie) : ?>
                 				<li>
-                					<a href="#"><?= $categorie->getLIBELLECATEGORIE(); ?></a>
+                					<a href="<?= $this->url('default_categorie',['categorie' => strtolower($categorie->getLIBELLECATEGORIE())]) ?>"><?= $categorie->getLIBELLECATEGORIE(); ?></a>
                 				</li>
             				<?php endforeach; ?>
                         </ul>
