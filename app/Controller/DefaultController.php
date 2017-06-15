@@ -21,11 +21,39 @@ class DefaultController extends Controller
 	                       ->where('SPOTLIGHTARTICLE',1)
 	                       ->find_result_set();
 	    
+	    # Récupérations des Articles de la Page d'Accueil
+	    $articles = \ORM::for_table('view_articles')->find_result_set();
+	    
 	    # Transmission à la Vue
-		$this->show('default/home', ['spotlights' => $spotlights]);
+		$this->show('default/home', ['spotlights' => $spotlights, 'articles' => $articles]);
+	}
+	
+	/**
+	 * Permet d'afficher les articles d'une catégorie
+	 * @param String $categorie
+	 */
+	public function categorie($categorie) {
+	    
+	    # Connexion à la BDD
+	    DbFactory::start();
+	    
+	    # Récupérations des Articles de la Catégorie
+	    $articles = \ORM::for_table('view_articles')
+	                   ->where('LIBELLECATEGORIE', ucfirst($categorie))
+	                   ->find_result_set();
+	    
+	    # Transmission à la Vue
+	    $this->show('default/categorie', ['articles' => $articles, 'categorie' => $categorie]);
+	    
 	}
 
 }
+
+
+
+
+
+
 
 
 
