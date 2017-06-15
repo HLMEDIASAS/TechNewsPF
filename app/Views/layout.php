@@ -81,11 +81,11 @@
     <nav class="menu-res hidden-lg hidden-md ">
     	<div class="menu-res-inner">
     		<ul>
-    				<li>
+    				<li <?php if($current == 'Accueil') { echo 'class="current"'; } ?>>
     					<a href="<?= $this->url('default_home'); ?>">Accueil</a>
     				</li>
     			<?php foreach ($categories as $categorie) : ?>
-    				<li>
+    				<li <?php if($current == ucfirst($categorie->getLIBELLECATEGORIE())) { echo 'class="current"'; } ?>>
     					<a href="<?= $this->url('default_categorie',['categorie' => strtolower($categorie->getLIBELLECATEGORIE())]) ?>"><?= $categorie->getLIBELLECATEGORIE(); ?></a>
     				</li>
 				<?php endforeach; ?>
@@ -111,11 +111,11 @@
     				<span>MENU</span>
     			</div>
     			<ul class="hidden-sm hidden-xs">
-    					<li>
+    					<li <?php if($current == 'Accueil') { echo 'class="current"'; } ?>>
         					<a href="<?= $this->url('default_home'); ?>">Accueil</a>
         				</li>
     				<?php foreach ($categories as $categorie) : ?>
-        				<li>
+        				<li <?php if($current == ucfirst($categorie->getLIBELLECATEGORIE())) { echo 'class="current"'; } ?>>
         					<a href="<?= $this->url('default_categorie',['categorie' => strtolower($categorie->getLIBELLECATEGORIE())]) ?>"><?= $categorie->getLIBELLECATEGORIE(); ?></a>
         				</li>
     				<?php endforeach; ?>

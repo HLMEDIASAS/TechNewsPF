@@ -1,7 +1,7 @@
 <?php
 
 use Model\Shortcut;
-$this->layout('layout', ['title' => 'Tech News - Accueil']) ?>
+$this->layout('layout', ['title' => 'Tech News - Accueil', 'current' => 'Accueil']) ?>
 
 <!-- Pour inclure du CSS -->
 <?php $this->start('css') ?>

@@ -1,6 +1,6 @@
 <?php
 use Model\Shortcut;
-$this->layout('layout', ['title' => 'TechNews | '.ucfirst($categorie)]);
+$this->layout('layout', ['title' => 'TechNews | '.ucfirst($categorie), 'current' => ucfirst($categorie)]);
 ?>
 
 <!-- Pour inclure du CSS -->
