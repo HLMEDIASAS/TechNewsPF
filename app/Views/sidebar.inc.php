@@ -1,3 +1,4 @@
+<?php use Model\Shortcut; ?>
 <!--colright-->
 <div class="col-md-4 col-sm-12">
 	<!--tab popular-->
@@ -13,11 +14,20 @@
 			<ul class="list-news-popular">
 				<?php foreach ($cinqDerniersArticles as $article) : ?>
     				<li>
-    					<a href="#">
+    					<a href="<?= $this->url('default_article', [
+            						    'categorie' => strtolower($article->LIBELLECATEGORIE),
+            						    'id'        => $article->IDARTICLE,
+            						    'slug'      => Shortcut::generateSlug($article->TITREARTICLE)
+            						]); ?>">
+ 
     						<img alt="<?= $article->TITREARTICLE; ?>" 
     							src="<?= $this->assetUrl('images/product/'.$article->FEATUREDIMAGEARTICLE); ?>">
     					</a>
-    					<h3><a href="#"><?= $article->TITREARTICLE; ?></a></h3>
+    					<h3><a href="<?= $this->url('default_article', [
+            						    'categorie' => strtolower($article->LIBELLECATEGORIE),
+            						    'id'        => $article->IDARTICLE,
+            						    'slug'      => Shortcut::generateSlug($article->TITREARTICLE)
+            						]); ?>"><?= $article->TITREARTICLE; ?></a></h3>
     					<div class="meta-post">
     						<a href="#">
     							<?= $article->PRENOMAUTEUR; ?> <?= $article->NOMAUTEUR; ?>    

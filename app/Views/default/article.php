@@ -84,12 +84,20 @@ $this->layout('layout', ['title' => $article->TITREARTICLE, 'current' => ucfirst
                         <div class="col-md-4 col-sm-4 col-xs-12">
                             <div class="spotlight-item-thumb">
                                 <div class="spotlight-item-thumb-img">
-                                    <a href="#">
+                                    <a href="<?= $this->url('default_article', [
+            						    'categorie' => strtolower($suggestion->LIBELLECATEGORIE),
+            						    'id'        => $suggestion->IDARTICLE,
+            						    'slug'      => Shortcut::generateSlug($suggestion->TITREARTICLE)
+            						]); ?>">
                                         <img alt="" src="<?= $this->assetUrl('images/product/'.$suggestion->FEATUREDIMAGEARTICLE); ?>">
                                     </a>
                                     <a href="#" class="cate-tag"><?= $suggestion->LIBELLECATEGORIE; ?></a>
                                 </div>
-                                <h3><a href="#"><?= $suggestion->TITREARTICLE; ?></a></h3>
+                                <h3><a href="<?= $this->url('default_article', [
+            						    'categorie' => strtolower($suggestion->LIBELLECATEGORIE),
+            						    'id'        => $suggestion->IDARTICLE,
+            						    'slug'      => Shortcut::generateSlug($suggestion->TITREARTICLE)
+            						]); ?>"><?= $suggestion->TITREARTICLE; ?></a></h3>
                                 <div class="meta-post">
                                     <a href="#">
                                         <?= $suggestion->PRENOMAUTEUR; ?> <?= $suggestion->NOMAUTEUR; ?>

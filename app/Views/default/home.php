@@ -27,7 +27,11 @@ $this->layout('layout', ['title' => 'Tech News - Accueil', 'current' => 'Accueil
             				</div>
             				<div class="spotlight-item-caption">
             					<h2 class="font-heading">
-            						<a href="article.html">
+            						<a href="<?= $this->url('default_article', [
+            						    'categorie' => strtolower($slide->LIBELLECATEGORIE),
+            						    'id'        => $slide->IDARTICLE,
+            						    'slug'      => Shortcut::generateSlug($slide->TITREARTICLE)
+            						]); ?>">
             							<?= $slide->TITREARTICLE; ?>
             						</a>
             					</h2>
