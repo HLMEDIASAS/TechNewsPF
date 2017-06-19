@@ -1,6 +1,6 @@
 <?php
 use Model\Shortcut;
-$this->layout('layout', ['title' => 'TechNews | ', 'current' => '']);
+$this->layout('layout', ['title' => $article->TITREARTICLE, 'current' => ucfirst($categorie)]);
 ?>
 
 <!-- Pour inclure du CSS -->
@@ -80,66 +80,28 @@ $this->layout('layout', ['title' => 'TechNews | ', 'current' => '']);
             </div>
             <section class="spotlight-thumbs spotlight-thumbs-related">
                 <div class="row">
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="spotlight-item-thumb">
-                            <div class="spotlight-item-thumb-img">
-                                <a href="#">
-                                    <img alt="" src="images/product/3.jpg">
-                                </a>
-                                <a href="#" class="cate-tag">business</a>
-                            </div>
-                            <h3><a href="#">Donald Trump suggests the DNC was hacked by 'someone sitting on their bed that weighs 400 lbs'</a></h3>
-                            <div class="meta-post">
-                                <a href="#">
-                                    Sue	Benson
-                                </a>
-                                <em></em>
-                                <span>
-                                    22 Sep 2016
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="spotlight-item-thumb">
-                            <div class="spotlight-item-thumb-img">
-                                <a href="#">
-                                    <img alt="" src="images/product/4.jpg">
-                                </a>
-                                <a href="#" class="cate-tag">Computing</a>
-                            </div>
-                            <h3><a href="#">Six big ways MacOS Sierra is going to change your Apple experience</a></h3>
-                            <div class="meta-post">
-                                <a href="#">
-                                    Marion	Craig
-                                </a>
-                                <em></em>
-                                <span>
-                                    21 Sep 2016
-                                </span>
+                	<?php foreach ($suggestions as $suggestion) : ?>
+                        <div class="col-md-4 col-sm-4 col-xs-12">
+                            <div class="spotlight-item-thumb">
+                                <div class="spotlight-item-thumb-img">
+                                    <a href="#">
+                                        <img alt="" src="<?= $this->assetUrl('images/product/'.$suggestion->FEATUREDIMAGEARTICLE); ?>">
+                                    </a>
+                                    <a href="#" class="cate-tag"><?= $suggestion->LIBELLECATEGORIE; ?></a>
+                                </div>
+                                <h3><a href="#"><?= $suggestion->TITREARTICLE; ?></a></h3>
+                                <div class="meta-post">
+                                    <a href="#">
+                                        <?= $suggestion->PRENOMAUTEUR; ?> <?= $suggestion->NOMAUTEUR; ?>
+                                    </a>
+                                    <em></em>
+                                    <span>
+                                        <?= $suggestion->DATECREATIONARTICLE; ?>
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-                        <div class="spotlight-item-thumb">
-                            <div class="spotlight-item-thumb-img">
-                                <a href="#">
-                                    <img alt="" src="images/product/5.jpg">
-                                </a>
-                                <a href="#" class="cate-tag">Tech</a>
-                            </div>
-                            <h3><a href="#">Messenger Bots Are Overhyped, Underpowered�and Growing like Crazy</a></h3>
-                            <div class="meta-post">
-                                <a href="#">
-                                    Super User
-                                </a>
-                                <em></em>
-                                <span>
-                                    26 Sep 2016
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </section>
         </div>

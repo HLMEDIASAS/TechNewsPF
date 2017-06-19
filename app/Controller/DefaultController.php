@@ -9,40 +9,40 @@ class DefaultController extends Controller
 {
 
 	/**
-	 * Page d'accueil par défaut
+	 * Page d'accueil par dÃ©faut
 	 */
 	public function home()
 	{
-	    # Connexion à la BDD
+	    # Connexion Ã  la BDD
 	    DbFactory::start();
 	    
-	    # Récupération des Articles en SPOTLIGHT
+	    # RÃ©cupÃ©ration des Articles en SPOTLIGHT
 	    $spotlights = \ORM::for_table('view_articles')
 	                       ->where('SPOTLIGHTARTICLE',1)
 	                       ->find_result_set();
 	    
-	    # Récupérations des Articles de la Page d'Accueil
+	    # RÃ©cupÃ©rations des Articles de la Page d'Accueil
 	    $articles = \ORM::for_table('view_articles')->find_result_set();
 	    
-	    # Transmission à la Vue
+	    # Transmission Ã  la Vue
 		$this->show('default/home', ['spotlights' => $spotlights, 'articles' => $articles]);
 	}
 	
 	/**
-	 * Permet d'afficher les articles d'une catégorie
+	 * Permet d'afficher les articles d'une catÃ©gorie
 	 * @param String $categorie
 	 */
 	public function categorie($categorie) {
 	    
-	    # Connexion à la BDD
+	    # Connexion Ã  la BDD
 	    DbFactory::start();
 	    
-	    # Récupérations des Articles de la Catégorie
+	    # RÃ©cupÃ©rations des Articles de la CatÃ©gorie
 	    $articles = \ORM::for_table('view_articles')
 	                   ->where('LIBELLECATEGORIE', ucfirst($categorie))
 	                   ->find_result_set();
 	    
-	    # Transmission à la Vue
+	    # Transmission Ã  la Vue
 	    $this->show('default/categorie', ['articles' => $articles, 'categorie' => $categorie]);
 	    
 	}
@@ -54,14 +54,27 @@ class DefaultController extends Controller
 	 * @param String $slug
 	 */
 	public function article($categorie, $id, $slug) {
-	    # Connexion à la BDD
+	    # Connexion Ã  la BDD
 	    DbFactory::start();
 	    
-	    # Récupération de l'Article
+	    # RÃ©cupÃ©ration de l'Article
 	    $article = \ORM::for_table('view_articles')->find_one($id);
 	    
-	    # Transmission à la Vue
-	    $this->show('default/article', ['article' => $article]);
+	    # RÃ©cupÃ©ration des Articles de la CatÃ©gorie (suggestions)
+	    $suggestions = \ORM::for_table('view_articles')
+	                       # Je rÃ©cupÃ¨re uniquement les articles de la mÃªme catÃ©gorie que mon article
+	                       ->where('IDCATEGORIE', $article->IDCATEGORIE)
+	                       # Sauf mon article en cours
+	                       ->where_not_equal('IDARTICLE', $id)
+	                       # 3 articles maximum
+	                       ->limit(3)
+	                       # Par ordre dÃ©croissant
+	                       ->order_by_desc('IDARTICLE')
+	                       # Je rÃ©cupÃ¨re les rÃ©sultats
+	                       ->find_result_set();
+	    
+	    # Transmission Ã  la Vue
+	    $this->show('default/article', ['article' => $article, 'suggestions' => $suggestions, 'categorie' => $categorie]);
 	}
 
 }
