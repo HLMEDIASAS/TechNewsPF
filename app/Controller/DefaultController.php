@@ -46,8 +46,28 @@ class DefaultController extends Controller
 	    $this->show('default/categorie', ['articles' => $articles, 'categorie' => $categorie]);
 	    
 	}
+	
+	/**
+	 * Permet d'afficher un Article
+	 * @param String $categorie
+	 * @param Entier $id
+	 * @param String $slug
+	 */
+	public function article($categorie, $id, $slug) {
+	    # Connexion à la BDD
+	    DbFactory::start();
+	    
+	    # Récupération de l'Article
+	    $article = \ORM::for_table('view_articles')->find_one($id);
+	    
+	    # Transmission à la Vue
+	    $this->show('default/article', ['article' => $article]);
+	}
 
 }
+
+
+
 
 
 

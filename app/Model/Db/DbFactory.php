@@ -23,6 +23,12 @@ class DbFactory
         ORM::configure('username', $app->getConfig('db_user'));
         ORM::configure('password', $app->getConfig('db_pass'));
         
+        # Configuration de la clé primaire de chaque table
+        ORM::configure('id_column_overrides', array(
+           'article'            =>  'IDARTICLE',
+            'view_articles'     =>  'IDARTICLE'
+        ));
+        
     }
     
 }
