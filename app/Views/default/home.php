@@ -54,13 +54,23 @@ $this->layout('layout', ['title' => 'Tech News - Accueil', 'current' => 'Accueil
             			<div class="col-md-4 col-sm-4 col-xs-12">
             				<div class="spotlight-item-thumb">
             					<div class="spotlight-item-thumb-img">
-            						<a href="#">
+            					
+            						<a href="<?= $this->url('default_article', [
+            						    'categorie' => strtolower($article->LIBELLECATEGORIE),
+            						    'id'        => $article->IDARTICLE,
+            						    'slug'      => Shortcut::generateSlug($article->TITREARTICLE)
+            						]); ?>">
+            						
             							<img alt="<?= $article->TITREARTICLE; ?>" 
             								src="<?= $this->assetUrl("images/product/".$article->FEATUREDIMAGEARTICLE); ?>" />
             						</a>
             						<a href="<?= $this->url('default_categorie',['categorie' => strtolower($article->LIBELLECATEGORIE)]) ?>" class="cate-tag"><?= $article->LIBELLECATEGORIE; ?></a>
             					</div>
-            					<h3><a href="#"><?= $article->TITREARTICLE; ?></a></h3>
+            					<h3><a href="<?= $this->url('default_article', [
+            						    'categorie' => strtolower($article->LIBELLECATEGORIE),
+            						    'id'        => $article->IDARTICLE,
+            						    'slug'      => Shortcut::generateSlug($article->TITREARTICLE)
+            						]); ?>"><?= $article->TITREARTICLE; ?></a></h3>
             					<div class="meta-post">
             						<a href="#">
             							<?= $article->PRENOMAUTEUR; ?> <?= $article->NOMAUTEUR; ?>
