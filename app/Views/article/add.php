@@ -17,7 +17,7 @@
 	
 	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
-			<form class="form-horizontal" method="POST">
+			<form class="form-horizontal" enctype="multipart/form-data" method="POST">
 				
 				<h3>Ajouter un Article</h3>
 				
@@ -82,11 +82,13 @@
 					<div class="col-md-7">
 						<div class="checkbox">
 							<label>
-								<input type="checkbox" name="SPECIALARTICLE">
+								<input type="hidden" name="SPECIALARTICLE" value="0">
+								<input type="checkbox" name="SPECIALARTICLE" value="1">
 								Sp&eacute;cial
 							</label>
 							<label>
-								<input type="checkbox" name="SPOTLIGHTARTICLE">
+								<input type="hidden" name="SPOTLIGHTARTICLE" value="0">
+								<input type="checkbox" name="SPOTLIGHTARTICLE" value="1">
 								Spotlight
 							</label>
 						</div>
