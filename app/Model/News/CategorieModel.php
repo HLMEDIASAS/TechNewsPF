@@ -5,12 +5,12 @@ class CategorieModel extends \W\Model\Model
 {
     
     /**
-     * Récupère les catégories depuis la BDD
+     * RÃ©cupÃ¨re les catÃ©gories depuis la BDD
      * @return Array Objet de type Categorie
      */
     public function getCategories() {
         
-        // -- Je récupère les catégories depuis la BDD
+        // -- Je rÃ©cupÃ¨re les catÃ©gories depuis la BDD
         #$categories = $this->findAll();
         
         // : SELECT IDCATEGORIE, DISTINCT(LIBELLECATEGORIE) FROM view_articles
@@ -21,10 +21,10 @@ class CategorieModel extends \W\Model\Model
         
         #print_r($categories);
         
-        // -- Je créer un tableau vide pour stocker mes objets de categorie
+        // -- Je crï¿½er un tableau vide pour stocker mes objets de categorie
         $data = [];
         
-        // -- Je parcours mes catégories et pour chacune d'elle, je créer un nouvel objet.
+        // -- Je parcours mes catï¿½gories et pour chacune d'elle, je crï¿½er un nouvel objet.
         // -- Je place cette objet "Categorie" dans mon tableau "data"
         foreach ($categories as $categorie) {
             $data[] = new Categorie($categorie['IDCATEGORIE'], $categorie['LIBELLECATEGORIE']);

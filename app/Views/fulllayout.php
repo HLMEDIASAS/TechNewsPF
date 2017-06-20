@@ -12,11 +12,11 @@
     # Initialisation de la Connexion
     DbFactory::start();
     
-    # R�cup�ration des Tags
+    # Récupération des Tags
     $tags = ORM::for_table('tags')->find_result_set();
     #debug($tags);
     
-    # R�cup�ration des 5 derniers articles du plus r�cent au plus ancien.
+    # Récupération des 5 derniers articles du plus récent au plus ancien.
     $cinqDerniersArticles = ORM::for_table('view_articles')
                                 ->limit(5)
                                 ->order_by_desc('DATECREATIONARTICLE')
@@ -24,7 +24,7 @@
     
     #debug($cinqDerniersArticles);
     
-    # R�cup�ration des Articles en Avant
+    # Récupération des Articles en Avant
     $specialArticles = ORM::for_table('view_articles')
                            ->where('SPECIALARTICLE', 1)
                             ->find_result_set();
@@ -137,9 +137,6 @@
      
     		<!-- CONTENU DU SITE -->
     		<?= $this->section('contenu'); ?>
-    		
-    		<!-- SIDEBAR -->
-    		<?php include_once 'sidebar.inc.php'; ?>
     		
      	</div> <!-- ./page -->
      </div> <!-- ./container --> 

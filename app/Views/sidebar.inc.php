@@ -27,7 +27,7 @@
             						    'categorie' => strtolower($article->LIBELLECATEGORIE),
             						    'id'        => $article->IDARTICLE,
             						    'slug'      => Shortcut::generateSlug($article->TITREARTICLE)
-            						]); ?>"><?= $article->TITREARTICLE; ?></a></h3>
+            						]); ?>">	 <?= $article->TITREARTICLE; ?></a></h3>
     					<div class="meta-post">
     						<a href="#">
     							<?= $article->PRENOMAUTEUR; ?> <?= $article->NOMAUTEUR; ?>    

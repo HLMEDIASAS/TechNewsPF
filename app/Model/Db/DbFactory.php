@@ -3,11 +3,11 @@ namespace Model\Db;
 use ORM;
 
 /* --
- * Le fait de déclarer des propriétés ou des méthodes comme
- * statiques vous permet d'y accéder sans avoir besoin d'instancier
- * la classe. On ne peut accéder à une propriété déclarée comme statique
- * avec l'objet instancié d'une classe (bien que ce soit possible pour
- * une méthode statique).
+ * Le fait de dï¿½clarer des propriï¿½tï¿½s ou des mï¿½thodes comme
+ * statiques vous permet d'y accï¿½der sans avoir besoin d'instancier
+ * la classe. On ne peut accï¿½der ï¿½ une propriï¿½tï¿½ dï¿½clarï¿½e comme statique
+ * avec l'objet instanciï¿½ d'une classe (bien que ce soit possible pour
+ * une mï¿½thode statique).
  * Docs : http://php.net/manual/fr/language.oop5.static.php
  */
 class DbFactory
@@ -15,7 +15,7 @@ class DbFactory
     
     public static function start() {
         
-        # Récupération des Données de l'App
+        # RÃ©cupÃ©ration des DonnÃ©es de l'App
         $app = getApp();
         
         # Initialisation de Idiorm
@@ -23,7 +23,7 @@ class DbFactory
         ORM::configure('username', $app->getConfig('db_user'));
         ORM::configure('password', $app->getConfig('db_pass'));
         
-        # Configuration de la clé primaire de chaque table
+        # Configuration de la clÃ© primaire de chaque table
         ORM::configure('id_column_overrides', array(
            'article'            =>  'IDARTICLE',
             'view_articles'     =>  'IDARTICLE'
