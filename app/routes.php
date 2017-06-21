@@ -13,6 +13,9 @@
 	    
 	    # Route pour Ajouter un Article
 	    ['GET|POST', '/article/ajouter-un-article.html', 'Article#add', 'article_add'],
+	    
+	    # Ajouter une Adresse Email dans la Newsletter
+	    ['POST', '/newsletter/add', 'Default#newsletteradd', 'default_newsletteradd'],
 	);
 	
 	
